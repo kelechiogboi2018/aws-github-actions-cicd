@@ -22,10 +22,10 @@ jobs:
 
     - name: Inspect GitHub OIDC Claims
       uses: github/actions-oidc-debugger@main
-    with:
+      with:
       audience: sts.amazonaws.com
 
-      - name: Configure AWS Credentials
+    - name: Configure AWS Credentials
     uses: aws-actions/configure-aws-credentials@v4
     with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
@@ -35,7 +35,7 @@ jobs:
     id: login-ecr
     uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build and Push Docker Image
+          - name: Build and Push Docker Image
     env:
       ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
       ECR_REPOSITORY: aws-github-actions-cicd
